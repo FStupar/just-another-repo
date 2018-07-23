@@ -1,0 +1,24 @@
+<div class="main-container">
+  <pro-tent-table-info-header [currentDate]="currentDate" [loadData]="loadData" [saveData]="saveData"></pro-tent-table-info-header>
+  <div class="table">
+    <table>
+      <thead>
+        <tr>
+          <th>Vrsta Posla</th>
+          <th>Šifra</th>
+          <th *ngFor="let day of days;let i=index">
+            <div class="day-column">
+              <p>{{getDaySequenceForMonth(currentDate)[i%7]}}</p>
+              <p>{{day}}</p>
+            </div>
+          </th>
+          <th>Ukupno</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let row of rows" pro-tent-row [row]="row" [register]="register" [updateSumCallback]="updateTotalSum"></tr>
+        <tr pro-tent-row [row]="masterRow" [register]="register" [updateSumCallback]="updateTotalSum"></tr>
+      </tbody>
+    </table>
+  </div>
+</div>

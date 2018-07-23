@@ -1,0 +1,11 @@
+.main-container {
+  display: block;
+  margin-left: 50px;
+  flex-direction: column;
+  align-items: center;
+}
+.day-column {
+  p {
+    margin: unset;
+  }
+}

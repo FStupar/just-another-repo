@@ -1,0 +1,32 @@
+.row-container {
+  display: inline-flex;
+  flex-direction: row;
+  background: whitesmoke;
+  .row-cell {
+    display: block;
+    border: 1px solid black;
+    margin: 4px;
+  }
+}
+.workType-cell {
+  padding: 0 16px 16px 0;
+}
+.date-cell {
+  width: 20px;
+  text-align: center;
+}
+.summation-cell {
+  margin-left: 50px;
+  text-align: center;
+}
+
+/* For Firefox */
+input[type='number'] {
+  -moz-appearance: textfield;
+}
+/* Webkit browsers like Safari and Chrome */
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
