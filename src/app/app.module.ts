@@ -50,6 +50,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TableViewComponent } from './table-view/table-view.component';
 import { RowComponent } from './table-view/row/row.component';
 import { TableInfoHeaderComponent } from './table-view/table-info-header/table-info-header.component';
+import { TableFooterComponent } from './table-view/table-footer/table-footer.component';
+import { FilterPipe } from './util/pipes/filter.pipe';
 
 @NgModule({
   exports: [
@@ -89,7 +91,7 @@ import { TableInfoHeaderComponent } from './table-view/table-info-header/table-i
     MatTooltipModule,
     MatTreeModule
   ],
-  declarations: [AppComponent, TableViewComponent, RowComponent, TableInfoHeaderComponent],
+  declarations: [AppComponent, TableViewComponent, RowComponent, TableInfoHeaderComponent, TableFooterComponent, FilterPipe],
 
   imports: [
     BrowserModule,

@@ -1,3 +1,5 @@
+@import '~compass-sass-mixins/lib/compass';
+
 .row-container {
   display: inline-flex;
   flex-direction: row;
@@ -8,14 +10,28 @@
     margin: 4px;
   }
 }
+
 .workType-cell {
-  padding: 0 16px 16px 0;
+  @extend .cell !optional;
+  padding: 8px;
+  white-space: nowrap;
 }
 .date-cell {
-  width: 20px;
+  @extend .cell !optional;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  padding: 0;
   text-align: center;
+  background-color: transparent;
+  border: 0px solid white;
+  &:focus {
+    outline: none;
+    background-color: white;
+  }
 }
 .summation-cell {
+  @extend .cell !optional;
   margin-left: 50px;
   text-align: center;
 }

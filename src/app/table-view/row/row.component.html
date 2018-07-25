@@ -1,18 +1,28 @@
 <td class="workType-cell">
+<!-- <td [ngClass]="(row.isSpecial && !row.workType)?'master-cell':'workType-cell'"> -->
   <span>{{row.workType}}</span>
 </td>
 <td class="workType-cell">
   <span>{{row.code}}</span>
 </td>
 <ng-container *ngIf="row.hasDayCount;else emptycells">
-<td *ngFor="let input of row.hourInputs; let i=index; trackBy:customTrackBy">
-  <input class="date-cell" type="number" (input)="checkValidity($event)" [(ngModel)]="row.hourInputs[i]" (blur)="sumUp()" />
-</td>
+  <td  class="cell" *ngFor="let input of row.hourInputs; let i=index; trackBy:customTrackBy" [ngClass]="isWeekend(i)?'weekend-cell':''">
+    <input class="date-cell" type="number" (input)="checkValidity($event)" [(ngModel)]="row.hourInputs[i]" (blur)="sumUp()" />
+  </td>
 </ng-container>
 <ng-template #emptycells>
   <td *ngFor="let input of row.hourInputs; let i=index; trackBy:customTrackBy">
   </td>
 </ng-template>
-<td class="summation-cell">
-  <span>{{this.row.summation}}</span>
-</td>
+
+
+<ng-container *ngIf="row.isSpecial && row.workType && !row.hasDayCount;else regularrow">
+    <td class="summation-cell">
+        <input class="date-cell" type="number" (input)="checkValidity($event)" [(ngModel)]="row.summation"/>
+      </td>
+  </ng-container>
+  <ng-template #regularrow>
+      <td class="summation-cell">
+          <span>{{this.row.summation}}</span>
+        </td>
+  </ng-template>
