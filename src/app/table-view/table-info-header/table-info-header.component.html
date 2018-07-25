@@ -2,7 +2,8 @@
   <fa name="angle-left" size="lg" (click)="changeMonth(-1)"></fa>
   <span>{{getMonthName()}}</span>
   <fa name="angle-right" size="lg" (click)="changeMonth(1)"></fa>
-  <div class="save-icon">
-    <fa name="save" size="lg" (click)="saveData()"></fa>
+  <div class="icons-container">
+    <fa name="save" class="save-icon" size="lg" (click)="saveData()"></fa>
+    <fa name="trash" class="trash-icon" size="lg" (click)="clearData()"></fa>
   </div>
 </div>

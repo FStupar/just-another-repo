@@ -1,7 +1,7 @@
 <mat-card class="table-card">
   <mat-card-header style="width:100%;">
     <!-- <div mat-card-avatar class="example-header-image"></div> -->
-    <pro-tent-table-info-header style="width:100%;" [currentDate]="currentDate" [loadData]="loadData" [saveData]="saveData"></pro-tent-table-info-header>
+    <pro-tent-table-info-header style="width:100%;" [currentDate]="currentDate" [loadData]="loadData"  [clearData]="clear" [saveData]="save"></pro-tent-table-info-header>
     <!-- <mat-card-title>Shiba Inu</mat-card-title>
     <mat-card-subtitle>Dog Breed</mat-card-subtitle> -->
   </mat-card-header>
@@ -12,18 +12,6 @@
       <table>
         <thead>
           <tr>
-
-            <!-- <th>Vrsta Posla</th> -->
-
-            <!-- <th>
-              <mat-form-field class="example-form-field">
-                  <input matInput type="text" placeholder="Vrsta Posla" [(ngModel)]="searchField">
-                  <button mat-button *ngIf="searchField" matSuffix mat-icon-button aria-label="Clear" (click)="searchField=''">
-                      <fa name="times" size="lg"></fa>
-                  </button>
-                </mat-form-field>
-          </th> -->
-
             <th>
               <input class="search-input" type="text" placeholder="Vrsta Posla" [(ngModel)]="searchField">
               <button mat-button *ngIf="searchField" matSuffix mat-icon-button aria-label="Clear" (click)="searchField=''">

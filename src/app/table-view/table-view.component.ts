@@ -1,7 +1,9 @@
-import { IntervalDataService } from './interval-data.service';
+import { DialogService } from './../services/dialog.service';
+import { IntervalDataService } from '../services/interval-data.service';
 import { RowComponent } from './row/row.component';
 import { Component, OnInit } from '@angular/core';
 import { Row } from './row/row';
+import { MatSnackBar, MatDialog } from '@angular/material';
 
 @Component({
   selector: 'pro-tent-table-view',
@@ -16,7 +18,12 @@ export class TableViewComponent implements OnInit {
   rowComponents: RowComponent[] = new Array();
   currentDate: Date = new Date();
   searchField: string;
-  constructor(private dataService: IntervalDataService) {}
+  constructor(
+    private dataService: IntervalDataService,
+    public dialogService: DialogService,
+    public snackBar: MatSnackBar,
+    public dialog: MatDialog
+  ) {}
 
   ngOnInit() {
     this.loadData(this.currentDate);
@@ -26,14 +33,46 @@ export class TableViewComponent implements OnInit {
     return this.dataService.getDaySequenceForMonth(date);
   }
 
+  save = () => {
+    this.dialogService.openConfirmDialog(
+      '<h1>Da li želite da snimite? Naknadne prepravke nisu moguće</h1>',
+      this.saveData
+    );
+  }
+
+  clear = () => {
+    this.dialogService.openConfirmDialog(
+      '<h1>Da li ste sigurni da želite da obrišete podatke?</h1>',
+      this.clearData
+    );
+  }
+
   saveData = () => {
-    console.log(this.rows);
-    this.dataService.saveData({
-      date: this.currentDate,
-      masterRow: this.masterRow,
-      rows: this.rows,
-      specialRows: this.specialRows
+    this.dataService
+      .saveData({
+        date: this.currentDate,
+        masterRow: this.masterRow,
+        rows: this.rows,
+        specialRows: this.specialRows
+      })
+      .subscribe(() =>
+        this.snackBar.open('Izveštaj o radu uspešno snimljen.', undefined, {
+          duration: 1500
+        })
+      );
+  }
+
+  clearData = () => {
+    this.rows.forEach(row => {
+      row.hourInputs = Array.from({ length: row.dayCount }).fill(0);
+      row.summation = 0;
     });
+    this.specialRows.forEach(row => {
+      row.hourInputs = Array.from({ length: row.dayCount }).fill(0);
+      row.summation = 0;
+    });
+    this.masterRow.summation = 0;
+    this.dataService.clearDataFor(this.currentDate);
   }
 
   loadData = (date: Date) => {

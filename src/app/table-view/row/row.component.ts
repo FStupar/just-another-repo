@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Row } from './row';
-import { IntervalDataService } from '../interval-data.service';
+import { IntervalDataService } from '../../services/interval-data.service';
 
 @Component({
   // tslint:disable-next-line:component-selector
@@ -22,12 +22,6 @@ export class RowComponent implements OnInit {
   constructor(private dataService: IntervalDataService) {}
 
   ngOnInit() {
-    console.log(
-      'isSpecial ',
-      this.row.isSpecial,
-      ' workType? ',
-      this.row.workType
-    );
     if (this.register) {
       this.register(this, this.row.workType === undefined);
     }

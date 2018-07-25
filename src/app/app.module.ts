@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CdkTableModule } from '@angular/cdk/table';
 import { CdkTreeModule } from '@angular/cdk/tree';
-import {HttpClientModule} from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import {
@@ -52,6 +52,7 @@ import { RowComponent } from './table-view/row/row.component';
 import { TableInfoHeaderComponent } from './table-view/table-info-header/table-info-header.component';
 import { TableFooterComponent } from './table-view/table-footer/table-footer.component';
 import { FilterPipe } from './util/pipes/filter.pipe';
+import { ConfirmComponent } from './services/dialogs/confirm/confirm.component';
 
 @NgModule({
   exports: [
@@ -91,7 +92,15 @@ import { FilterPipe } from './util/pipes/filter.pipe';
     MatTooltipModule,
     MatTreeModule
   ],
-  declarations: [AppComponent, TableViewComponent, RowComponent, TableInfoHeaderComponent, TableFooterComponent, FilterPipe],
+  declarations: [
+    AppComponent,
+    TableViewComponent,
+    RowComponent,
+    TableInfoHeaderComponent,
+    TableFooterComponent,
+    FilterPipe,
+    ConfirmComponent
+  ],
 
   imports: [
     BrowserModule,
@@ -140,6 +149,7 @@ import { FilterPipe } from './util/pipes/filter.pipe';
     AngularFontAwesomeModule
   ],
   providers: [],
+  entryComponents: [ConfirmComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

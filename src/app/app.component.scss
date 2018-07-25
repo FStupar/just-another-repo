@@ -1,13 +1,18 @@
 .sidebar-container {
   height: 100vw;
-  background: red;
+  background: #3a3633;
   padding-right: 10px;
 }
 .sidebar-slide {
-  height: 100vw;
+  // height: 100vw;
   min-width: 20px;
-  background: blue;
 }
-.sidebar-content{
-  width:200px;
+.mat-drawer {
+  background: #3a3633;
+}
+.sidebar-content {
+  display: inline-block;
+  min-width: 200px;
+  color: whitesmoke;
+  background: #3a3633;
 }

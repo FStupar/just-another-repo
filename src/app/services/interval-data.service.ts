@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Row } from './row/row';
-import WORKTYPES from './row/workTypes.mock';
-import { Observable, of } from '../../../node_modules/rxjs';
+import { Row } from '../table-view/row/row';
+import WORKTYPES from '../table-view/row/workTypes.mock';
+import { Observable, of } from 'rxjs';
 
 const DAYS = ['po', 'ut', 'sr', 'če', 'pe', 'su', 'ne'];
 
@@ -42,7 +42,13 @@ export class IntervalDataService {
     this.workTypes.forEach(item => {
       if (!item.isSpecial) {
         rows.push(
-          new Row(this.dayCount, item.name, item.code, item.hasDayCount, item.isSpecial)
+          new Row(
+            this.dayCount,
+            item.name,
+            item.code,
+            item.hasDayCount,
+            item.isSpecial
+          )
         );
         return;
       }
@@ -57,15 +63,24 @@ export class IntervalDataService {
         return;
       }
       specialRows.push(
-        new Row(this.dayCount, item.name, item.code, item.hasDayCount, item.isSpecial)
+        new Row(
+          this.dayCount,
+          item.name,
+          item.code,
+          item.hasDayCount,
+          item.isSpecial
+        )
       );
     });
     return { masterRow, rows, specialRows };
   }
 
   saveData(data) {
-    console.log('received data', data);
-    localStorage.setItem(this.getSaveKey(data.date), JSON.stringify(data));
+    return of(localStorage.setItem(this.getSaveKey(data.date), JSON.stringify(data)));
+  }
+
+  clearDataFor(date: Date) {
+    localStorage.removeItem(this.getSaveKey(date));
   }
 
   getDaysInMonth(anyDateInMonth) {

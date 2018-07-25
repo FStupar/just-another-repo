@@ -24,6 +24,7 @@ export class TableInfoHeaderComponent implements OnInit {
   @Input() currentDate: Date;
   @Input() loadData: Function;
   @Input() saveData: Function;
+  @Input() clearData: Function;
 
   constructor() {}
 

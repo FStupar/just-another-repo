@@ -5,16 +5,27 @@
   width: 100%;
   justify-content: space-between;
   align-items: center;
-  .save-icon {
+  .icons-container {
     margin-left: auto;
-    margin-right:16px;
+    margin-right: 16px;
   }
   span {
     width: 200px;
     text-align: center;
     padding: 16px 16px 16px 16px;
   }
-  fa {
+  .icon {
+    padding: 0 4px 0 4px;
+    width: 30px;
     cursor: pointer;
+  }
+
+  .save-icon {
+    @extend .icon;
+    color: rgb(0, 86, 172);
+  }
+  .trash-icon {
+    @extend .icon;
+    color: rgb(156, 3, 28);
   }
 }
