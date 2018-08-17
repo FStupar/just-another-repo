@@ -1,0 +1,47 @@
+<mat-card class="table-card">
+  <mat-card-header style="width:100%;">
+    <!-- <div mat-card-avatar class="example-header-image"></div> -->
+    <pro-tent-table-info-header style="width:100%;" [currentDate]="currentDate" [setUser]="setUser" [loadData]="loadData"  [clearData]="clear" [saveData]="save"></pro-tent-table-info-header>
+    <!-- <mat-card-title>Shiba Inu</mat-card-title>
+    <mat-card-subtitle>Dog Breed</mat-card-subtitle> -->
+  </mat-card-header>
+  <!-- <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu"> -->
+  <mat-card-content>
+  <div class="main-container">
+    <div class="table">
+      <table>
+        <thead>
+          <tr>
+            <th>
+              <input class="search-input" type="text" placeholder="Vrsta Posla" [(ngModel)]="searchField">
+              <button mat-button *ngIf="searchField" matSuffix mat-icon-button aria-label="Clear" (click)="searchField=''">
+                <fa name="times" size="lg"></fa>
+              </button>
+            </th>
+
+            <th>Šifra</th>
+            <th *ngFor="let day of days;let i=index">
+              <div class="day-column">
+                <p>{{getDaySequenceForMonth(currentDate)[i%7]}}</p>
+                <p>{{day}}</p>
+              </div>
+            </th>
+            <th>Ukupno</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let row of rows | filter: searchField" pro-tent-row [row]="row" [register]="register" [updateSumCallback]="updateTotalSum"
+            [currentDate]="currentDate"></tr>
+          <tr class="master-row" pro-tent-row [row]="masterRow" [register]="register" [updateSumCallback]="updateTotalSum"></tr>
+          <tr style="height:100px;"></tr>
+          <tr pro-tent-row *ngFor="let row of specialRows" [row]="row" [currentDate]="currentDate"></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</mat-card-content>
+  <mat-card-actions align="end">
+    <button mat-button (click)="save()">SNIMI</button>
+    <button mat-button (click)="clear()">OBRIŠI</button>
+  </mat-card-actions>
+</mat-card>

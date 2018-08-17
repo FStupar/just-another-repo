@@ -1,0 +1,78 @@
+@import '~compass-sass-mixins/lib/compass';
+@import '../../styles.scss';
+
+.table-card{
+  margin:24px;
+}
+.main-container {
+  display: flex;
+  margin-left: auto;
+  align-content: stretch;
+  flex-direction: column;
+  align-items: center;
+  background-color: whitesmoke; // Old browsers
+
+  .mat-form-field {
+    width: 100%;
+  }
+  .table {
+    table {
+      padding: 10px;
+      border-spacing: 0px;
+    }
+    th {
+      background: whitesmoke;
+      width: 40px;
+      font: $font;
+      font-style: normal;
+      font-weight: 500;
+    }
+    tr {
+      &:nth-child(2n) {
+        background: whitesmoke;
+      }
+      &:nth-child(2n + 1) {
+        background: white;
+      }
+    }
+    .search-input {
+      -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+      -moz-box-sizing: border-box; /* Firefox, other Gecko */
+      box-sizing: border-box; /* Opera/IE 8+ */
+      display: block;
+      width: 100%;
+      padding-left: 10px;
+      outline: none;
+      border: 1px rgba(150, 150, 150, 0.877);
+      background: transparent;
+      border-style: none none solid none;
+      font: $font;
+      font-size: 16px;
+    }
+  }
+}
+
+.cell {
+  font-size: 16px;
+  &:hover {
+    border: 1px dotted rgb(201, 195, 195);
+  }
+}
+.weekend-cell {
+  @extend .cell;
+  background: #f87a7a;
+}
+
+.master-row {
+  &:hover {
+    background: red;
+  }
+}
+.day-column {
+  p {
+    margin: unset;
+  }
+}
+.additional-info {
+  margin-top: 100px;
+}

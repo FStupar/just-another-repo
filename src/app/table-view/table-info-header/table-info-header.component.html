@@ -1,0 +1,17 @@
+<div class="table-info">
+  <fa name="angle-left" size="lg" (click)="changeMonth(-1)"></fa>
+  <span>{{getMonthName()}}</span>
+  <fa name="angle-right" size="lg" (click)="changeMonth(1)"></fa>
+  <div class="icons-container">
+    <label *ngIf="user" style="padding-right: 8px;">{{(''+user.tent).padStart(4, "0")}}</label>
+    <mat-form-field style="padding-right: 20px">
+      <mat-select placeholder="Zaposleni" [(ngModel)]="user">
+        <mat-option *ngFor="let user of users" (click)="putUser(user)" [value]="user">
+          {{user.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <fa name="save" class="save-icon" size="lg" (click)="saveData()"></fa>
+    <fa name="trash" class="trash-icon" size="lg" (click)="clearData()"></fa>
+  </div>
+</div>

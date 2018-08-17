@@ -1,0 +1,8 @@
+<h1 mat-dialog-title>Potvrda</h1>
+<div mat-dialog-content>
+  <span [innerHTML]="data.text"></span>
+</div>
+<div mat-dialog-actions align="end">
+  <button mat-button (click)="onNoClick()">Odustani</button>
+  <button mat-button (click)="confirm()" cdkFocusInitial>Ok</button>
+</div>
